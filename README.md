@@ -1,0 +1,1 @@
+Strict password generator
