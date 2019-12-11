@@ -4,3 +4,12 @@ body {
 #password {
     width: 200px;
 }
+#username {
+    width: 200px;
+}
+.negative {
+    color: red;
+}
+.positive {
+    color: green;
+}

@@ -6,11 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <script src="https://kit.fontawesome.com/c296bd0381.js" crossorigin="anonymous"></script>
     <title>Strict password</title>
 </head>
 <body>
+    <label for="username">Enter Your username here</label> <br>
+    <input type="username" id="username" maxlength="25" onkeydown="" value="username"> 
+    <br>
     <label for="password">Enter Your password here</label> <br>
-    <input type="text" id="password" maxlength="25" onkeydown="handler()"> 
+    <input type="text" id="password" maxlength="25" onkeydown="handler()" value="password"> 
+    <a id="error"></a>
     <script src="javascript.js"></script>
 </body>
 </html>
