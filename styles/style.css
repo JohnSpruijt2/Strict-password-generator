@@ -1,15 +1,21 @@
 body {
     background-color: grey;
 }
-#password {
-    width: 200px;
-}
-#username {
-    width: 200px;
+#password, #username {
+    width: 13rem;
 }
 .negative {
     color: red;
 }
 .positive {
     color: green;
+}
+#errorDiv {
+    width: 25rem;
+    float: left;
+    margin-top: 3.8rem;
+    margin-left: 1rem;
+}
+form {
+    float: left;
 }
