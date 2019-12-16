@@ -1,5 +1,7 @@
 body {
+    color: white;
     background-color: grey;
+    font-size: large;
 }
 #password, #username {
     width: 13rem;
@@ -11,11 +13,49 @@ body {
     color: green;
 }
 #errorDiv {
-    width: 25rem;
+    width: 26rem;
     float: left;
     margin-top: 3.8rem;
     margin-left: 1rem;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+input, #submit {
+    border-radius: 90rem;
+    padding: 0.5rem;
 }
 form {
     float: left;
+}
+#revealBtn {
+    cursor: pointer;
+    font-size: larger;
+    background: none;
+    border: none;
+}
+#revealBtn:hover {
+    color: white;
+}
+button {
+    cursor: pointer;
+}
+section {
+    padding: 1rem;
+    background-color: rgb(55, 55, 55);
+    margin: 0 auto;
+    width: 50rem;
+    height: 20rem;
+}
+#submit {
+    cursor: pointer;
+    width: 10rem;
+    margin: 1rem;
+}
+#submit:hover {
+    background-color: black;
+    color: white;
 }

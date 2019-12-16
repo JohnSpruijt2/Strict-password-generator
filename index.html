@@ -11,14 +11,15 @@
 </head>
 
 <body>
-
+    <section>
     <form>
     <label for="username">Enter your username here</label> <br>
     <input type="text" id="username" maxlength="25" onkeydown="" placeholder="Username"> 
     <br>
     <label for="password">Enter your password here</label> <br>
-    <input type="password" id="password" maxlength="25" onkeydown="handler()" placeholder="Password"> <br>
-    <button onclick="submit()">Submit</button>
+    <input type="password" id="password" maxlength="25" onkeydown="handler()" placeholder="Password">
+    <button id="revealBtn" type="button" onclick="reveal()"><i class="fas fa-eye"></i></button> <br>
+    <button id="submit" type="button" onclick="endTimer()">Submit</button>
     </form> 
 
     <div id="errorDiv">
@@ -29,7 +30,7 @@
     <a id="error5"></a> <br>
     <a id="error6"></a>
     </div>
-
+    </section>
     <script src="javascript.js"></script>
 </body>
 </html>
