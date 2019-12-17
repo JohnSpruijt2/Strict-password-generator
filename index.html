@@ -11,15 +11,15 @@
 </head>
 
 <body>
-    <section>
+    <section id="section">
     <form>
     <label for="username">Enter your username here</label> <br>
-    <input type="text" id="username" maxlength="25" onkeydown="" placeholder="Username"> 
+    <input type="text" id="username" maxlength="25" onkeydown="red()" placeholder="Username"> 
     <br>
     <label for="password">Enter your password here</label> <br>
     <input type="password" id="password" maxlength="25" onkeydown="handler()" placeholder="Password">
     <button id="revealBtn" type="button" onclick="reveal()"><i class="fas fa-eye"></i></button> <br>
-    <button id="submit" type="button" onclick="endTimer()">Submit</button>
+    <button id="submit" type="button" onclick="end()">Submit</button>
     </form> 
 
     <div id="errorDiv">

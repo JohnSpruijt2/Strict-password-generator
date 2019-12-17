@@ -3,23 +3,26 @@ var check1 = false
 var check2 = false
 var check3 = false
 var check4 = false
-
+var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 var timerHasStarted = false
 var time = 0
+var secret = document.querySelector('input[id="password"]').value
 function handler() {
     startTimer()
     setTimeout(function(){ handler2(); }, 2);
 }
 function handler2() {
-    window.secret = document.querySelector('input[id="password"]').value
+    secret = document.querySelector('input[id="password"]').value
    if (secret.length >0 && secret.length <8) {
        document.getElementById("error1").innerHTML = "<span class='negative'><i class='fas fa-times'></i></span> Password needs to be at least 8 char"
        handler3()
+       red()
    }
    else if (secret.length >7) {
         document.getElementById("error1").innerHTML = "<span class='positive'><i class='fas fa-check'></i></i></span> Password needs to be at least 8 char"
         check1 = true
         handler3()
+        red()
    }
    else if (secret.length == 0) {
         document.getElementById("error1").innerHTML = ""
@@ -105,6 +108,22 @@ function handler7() {
         handler9()
     }
 }
+function handler9() {   
+    if (check4 == true) {
+        var symbols = 0
+        for (i=0; i<split.length; i++) {
+            if (format.test(split[i]) == true) {
+                symbols++
+            }
+            }
+            if (symbols >1) {
+                document.getElementById("error6").innerHTML = "<span class='positive'><i class='fas fa-check'></i></i></span> Password needs to contain at least 2 symbols"
+            }
+            else {
+                document.getElementById("error6").innerHTML = "<span class='negative'><i class='fas fa-times'></i></span> Password needs to contain at least 2 symbols"
+            }
+    }
+}
 function startTimer() {
     if (timerHasStarted == false) {
         timer()
@@ -115,10 +134,33 @@ function startTimer() {
     }
 }
 function timer() {
-    setTimeout(function(){ time++; timer(); }, 1000);
+    window.timert = setTimeout(function(){ time++; timer(); }, 1000);
 }
 function endTimer() {
-    console.log("the timer should have ended by now")
+    clearTimeout(timert)
+}
+function end() {
+    window.names = 0
+    window.username = document.querySelector('input[id="username"]').value
+    if (username == "") {
+        document.getElementById("username").style.borderColor = "red"
+    }
+    else {
+        names++
+    }
+    if (secret == ""){
+        document.getElementById("password").style.borderColor = "red"
+    }
+    else {
+        names++
+    }
+    if (names == 2) {
+        endTimer()
+        endScreen()
+    }
+}
+function endScreen() {
+    document.getElementById("section").innerHTML = `<a>`+username+` made his password in `+time+` seconds.</a>`
 }
 function reveal() {
     var x = document.getElementById("password");
@@ -129,4 +171,19 @@ function reveal() {
     x.type = "password";
     document.getElementById("revealBtn").innerHTML = '<i class="fas fa-eye"></i>'
   }
+}
+function red() {
+    username = document.querySelector('input[id="username"]').value
+    if (username == "") {
+
+    }
+    else {
+        document.getElementById("username").style.borderColor = ""
+    }
+    if (secret == ""){
+        
+    }
+    else {
+        document.getElementById("password").style.borderColor = ""
+    }
 }
