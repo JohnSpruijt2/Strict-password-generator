@@ -3,7 +3,7 @@ var check1 = false
 var check2 = false
 var check3 = false
 var check4 = false
-var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+var format = /[ !@#$€%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 var timerHasStarted = false
 var time = 0
 var secret = document.querySelector('input[id="password"]').value
@@ -12,6 +12,7 @@ function handler() {
     setTimeout(function(){ handler2(); }, 2);
 }
 function handler2() {
+    window.wincheck = [false,false,false,false,false,false]
     secret = document.querySelector('input[id="password"]').value
    if (secret.length >0 && secret.length <8) {
        document.getElementById("error1").innerHTML = "<span class='negative'><i class='fas fa-times'></i></span> Password needs to be at least 8 char"
@@ -21,6 +22,7 @@ function handler2() {
    else if (secret.length >7) {
         document.getElementById("error1").innerHTML = "<span class='positive'><i class='fas fa-check'></i></i></span> Password needs to be at least 8 char"
         check1 = true
+        wincheck[0] = true
         handler3()
         red()
    }
@@ -52,6 +54,7 @@ function handler4() {
     if (uppercase >1) {
         document.getElementById("error2").innerHTML = "<span class='positive'><i class='fas fa-check'></i></i></span> Password needs to contain at least 2 uppercase letters"
         check0 = true
+        wincheck[1] = true
     }
     else {
         document.getElementById("error2").innerHTML = "<span class='negative'><i class='fas fa-times'></i></span> Password needs to contain at least 2 uppercase letters"
@@ -69,6 +72,7 @@ function handler5() {
     if (number > 2) {
         document.getElementById("error3").innerHTML = "<span class='positive'><i class='fas fa-check'></i></i></span> Password needs to contain at least 3 numbers"
         check2 = true
+        wincheck[2] = true
     }
     else {
         document.getElementById("error3").innerHTML = "<span class='negative'><i class='fas fa-times'></i></span> Password needs to contain at least 3 numbers"
@@ -85,6 +89,7 @@ function handler6() {
         else {
             document.getElementById("error4").innerHTML = "<span class='positive'><i class='fas fa-check'></i></i></span> Password can't be longer then 10 characters"
             check3 = true
+            wincheck[3] = true
         }
         
     }
@@ -101,6 +106,7 @@ function handler7() {
         if (apple >0) {
             document.getElementById("error5").innerHTML = "<span class='positive'><i class='fas fa-check'></i></i></span> Password needs to contain the word 'apple'"
             check4 = true
+            wincheck[4] = true
         }
         else {
             document.getElementById("error5").innerHTML = "<span class='negative'><i class='fas fa-times'></i></span> Password needs to contain the word 'apple'"
@@ -118,6 +124,7 @@ function handler9() {
             }
             if (symbols >1) {
                 document.getElementById("error6").innerHTML = "<span class='positive'><i class='fas fa-check'></i></i></span> Password needs to contain at least 2 symbols"
+                wincheck[5] = true
             }
             else {
                 document.getElementById("error6").innerHTML = "<span class='negative'><i class='fas fa-times'></i></span> Password needs to contain at least 2 symbols"
@@ -146,15 +153,20 @@ function end() {
         document.getElementById("username").style.borderColor = "red"
     }
     else {
-        names++
+        
     }
     if (secret == ""){
         document.getElementById("password").style.borderColor = "red"
     }
     else {
-        names++
+        
     }
-    if (names == 2) {
+    for (i=0; i<6; i++) {
+        if (wincheck[i] == true) {
+            names++
+        }
+    }
+    if (names == 6) {
         endTimer()
         endScreen()
     }
